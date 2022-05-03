@@ -13,6 +13,7 @@ subprojects {
                     versionName AppConfig.VERSION_NAME
 
                     buildConfigField 'String', 'RIJKSMUSEUM_API_KEY', "\"0fiuZFh4\""
+                    buildConfigField 'String', 'RIJKSMUSEUM_BASE_URL', "\"https://www.rijksmuseum.nl\""
                 }
 
                 compileOptions {

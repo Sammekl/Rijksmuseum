@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.sammekleijn.rijksmuseum.presentation.databinding.FragmentDetailBinding
 import com.sammekleijn.rijksmuseum.presentation.viewBindingLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import nl.dpgmedia.donaldduck.presentation.databinding.FragmentDetailBinding
 
 @AndroidEntryPoint
-class DetailFragment : Fragment() {
+internal class DetailFragment : Fragment() {
 
     private var binding: FragmentDetailBinding by viewBindingLifecycle()
 

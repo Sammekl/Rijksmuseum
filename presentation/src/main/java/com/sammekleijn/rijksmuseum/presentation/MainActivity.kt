@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.sammekleijn.rijksmuseum.presentation.R
+import com.sammekleijn.rijksmuseum.presentation.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import nl.dpgmedia.donaldduck.presentation.R
-import nl.dpgmedia.donaldduck.presentation.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

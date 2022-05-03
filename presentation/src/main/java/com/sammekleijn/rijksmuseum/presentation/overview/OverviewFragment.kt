@@ -5,15 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.sammekleijn.rijksmuseum.presentation.common.navigate
+import androidx.fragment.app.viewModels
+import com.sammekleijn.rijksmuseum.domain.collection.CollectionItem
+import com.sammekleijn.rijksmuseum.presentation.databinding.FragmentOverviewBinding
 import com.sammekleijn.rijksmuseum.presentation.viewBindingLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import nl.dpgmedia.donaldduck.presentation.databinding.FragmentOverviewBinding
+import timber.log.Timber
 
 @AndroidEntryPoint
-class OverviewFragment : Fragment() {
+internal class OverviewFragment : Fragment() {
 
     private var binding: FragmentOverviewBinding by viewBindingLifecycle()
+
+    private val viewModel: OverviewViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,5 +36,13 @@ class OverviewFragment : Fragment() {
                 navigate(OverviewFragmentDirections.toDetails())
             }
         }
+
+        with(viewModel) {
+            items.observe(viewLifecycleOwner, ::onItems)
+        }
+    }
+
+    private fun onItems(items: List<CollectionItem>) {
+        Timber.i("items: $items")
     }
 }
