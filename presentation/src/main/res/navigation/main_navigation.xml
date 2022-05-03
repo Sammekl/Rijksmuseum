@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation android:id="@+id/main_navigation"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/nav_overview">
+
+    <fragment
+        android:id="@+id/nav_overview"
+        android:name="com.sammekleijn.rijksmuseum.presentation.overview.OverviewFragment"
+        android:label="@string/overview"
+        tools:layout="@layout/fragment_overview">
+
+        <action
+            android:id="@+id/to_details"
+            app:destination="@id/nav_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_details"
+        android:name="com.sammekleijn.rijksmuseum.presentation.detail.DetailFragment"
+        android:label="@string/details"
+        tools:layout="@layout/fragment_detail" />
+</navigation>

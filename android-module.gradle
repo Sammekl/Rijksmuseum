@@ -1,0 +1,37 @@
+subprojects {
+    afterEvaluate {
+        if (project.hasProperty('android')) {
+            android {
+
+                compileSdkVersion AppConfig.TARGET_SDK
+                buildToolsVersion Versions.BUILD_TOOLS
+
+                defaultConfig {
+                    minSdkVersion AppConfig.MINIMUM_SDK
+                    targetSdkVersion AppConfig.TARGET_SDK
+                    versionCode AppConfig.VERSION_CODE
+                    versionName AppConfig.VERSION_NAME
+
+                    buildConfigField 'String', 'RIJKSMUSEUM_API_KEY', "\"0fiuZFh4\""
+                }
+
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_11
+                    targetCompatibility JavaVersion.VERSION_11
+                }
+            }
+
+            dependencies {
+
+                implementation Libraries.KOTLIN
+                implementation Libraries.TIMBER
+
+                testImplementation Libraries.JUNIT
+                testImplementation Libraries.JUNIT_EXTENSIONS
+                testImplementation Libraries.MOCKK
+                testImplementation Libraries.TEST_CORE
+                testImplementation Libraries.COROUTINES_TEST
+            }
+        }
+    }
+}
