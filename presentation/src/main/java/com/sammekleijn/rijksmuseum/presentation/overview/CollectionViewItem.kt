@@ -12,9 +12,16 @@ sealed class CollectionViewItem : Parcelable {
     @Parcelize
     data class ArtworkView(
         val title: String,
-        val imageUrl: String?,
+        val image: Image?,
         val content: Content
     ) : CollectionViewItem() {
+
+        @Parcelize
+        data class Image(
+            val url: String,
+            val width: Int,
+            val height: Int
+        ) : Parcelable
 
         @Parcelize
         data class Content(

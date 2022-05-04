@@ -3,6 +3,7 @@ package com.sammekleijn.rijksmuseum.presentation.overview
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -58,13 +59,23 @@ class OverviewListAdapter(
 
         fun bind(item: CollectionViewItem.ArtworkView) = with(binding) {
             title.text = item.title
-            image.transitionName = item.imageUrl
-            image.load(item.imageUrl) {
+            image.transitionName = item.image?.url
+            item.image?.setupAspectRatio()
+            image.load(item.image?.url) {
                 size(OriginalSize)
                 error(R.drawable.no_art_found_illustration)
                 fallback(R.drawable.no_art_found_illustration)
             }
             root.setOnClickListener { onItemClicked(item, image) }
+        }
+
+        private fun CollectionViewItem.ArtworkView.Image.setupAspectRatio() {
+            val relativeWidth = width.toFloat() / height.toFloat()
+            ConstraintSet().apply {
+                clone(binding.root)
+                setDimensionRatio(binding.image.id, "$relativeWidth:1")
+                applyTo(binding.root)
+            }
         }
     }
 

@@ -19,5 +19,7 @@ data class ArtObjectResponse(
 
 @Keep
 data class WebImageResponse(
-    val url: String
+    val url: String,
+    val width: Int,
+    val height: Int
 )

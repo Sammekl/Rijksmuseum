@@ -86,7 +86,7 @@ internal class OverviewFragment : Fragment() {
         val action = OverviewFragmentDirections.toDetails(
             item = pair.first
         )
-        pair.first.imageUrl?.let { transitionName ->
+        pair.first.image?.url?.let { transitionName ->
             val extras = FragmentNavigatorExtras(
                 pair.second to transitionName
             )

@@ -19,7 +19,13 @@ private fun ArtObjectResponse.toHeader() = Header(principalOrFirstMaker)
 
 private fun ArtObjectResponse.toArtwork() = Artwork(
     title = title,
-    imageUrl = webImage?.url,
+    image = webImage?.let {
+        Artwork.Image(
+            url = it.url,
+            width = it.width,
+            height = it.height
+        )
+    },
     content = Artwork.Content(
         longTitle = longTitle,
         objectNumber = objectNumber,

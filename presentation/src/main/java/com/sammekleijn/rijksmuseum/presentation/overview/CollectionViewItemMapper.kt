@@ -11,7 +11,13 @@ private fun CollectionItem.Header.toHeaderView() = CollectionViewItem.HeaderView
 
 private fun CollectionItem.Artwork.toArtworkView() = CollectionViewItem.ArtworkView(
     title = title,
-    imageUrl = imageUrl,
+    image = image?.let {
+        CollectionViewItem.ArtworkView.Image(
+            url = it.url,
+            width = it.width,
+            height = it.height
+        )
+    },
     content = CollectionViewItem.ArtworkView.Content(
         longTitle = content.longTitle,
         objectNumber = content.objectNumber,
