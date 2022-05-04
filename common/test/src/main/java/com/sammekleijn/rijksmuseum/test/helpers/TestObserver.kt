@@ -1,4 +1,4 @@
-package nl.dpgmedia.donaldduck.test.helpers
+package com.sammekleijn.rijksmuseum.test.helpers
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

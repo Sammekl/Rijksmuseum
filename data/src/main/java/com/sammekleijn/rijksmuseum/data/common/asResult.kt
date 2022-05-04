@@ -19,7 +19,6 @@ import timber.log.Timber
 import java.io.IOException
 import java.util.concurrent.TimeoutException
 
-@Suppress("TooGenericExceptionCaught")
 suspend inline fun <reified T> mapResult(
     crossinline networkCall: suspend () -> Response<T>,
 ): ResultOf<T> = withContext(Dispatchers.IO) {
@@ -59,7 +58,6 @@ private fun Int.toNetworkError() = when (this) {
     else -> ErrorType.Network(UNKNOWN)
 }
 
-@Suppress("MagicNumber")
 private object StatusCodes {
     val AUTH_ERRORS = 401..403
     val CLIENT_ERRORS = 404..451

@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.sammekleijn.rijksmuseum.data.common.mapResult
 import com.sammekleijn.rijksmuseum.domain.collection.CollectionItem
+import com.sammekleijn.rijksmuseum.domain.result.ErrorType
 import com.sammekleijn.rijksmuseum.domain.result.ResultOf
 import com.sammekleijn.rijksmuseum.domain.result.toLoadResultException
 import javax.inject.Inject
@@ -18,10 +19,11 @@ internal class CollectionPagingSource @Inject constructor(
         return when (val response = mapResult { service.getCollection(pageIndex) }) {
             is ResultOf.Success -> {
                 val items = response.value.toCollectionItems()
-                LoadResult.Page(
+                if (items.isEmpty()) LoadResult.Error(ErrorType.Empty.toLoadResultException())
+                else LoadResult.Page(
                     data = items,
                     prevKey = null,
-                    nextKey = if (items.isEmpty()) null else pageIndex + (params.loadSize / PAGE_SIZE)
+                    nextKey = pageIndex + (params.loadSize / PAGE_SIZE)
                 )
             }
             is ResultOf.Failure -> LoadResult.Error(response.errorType.toLoadResultException())
@@ -31,8 +33,7 @@ internal class CollectionPagingSource @Inject constructor(
 
     override fun getRefreshKey(state: PagingState<Int, CollectionItem>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
-                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1) ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }
     }
 }

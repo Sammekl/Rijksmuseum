@@ -57,6 +57,19 @@ internal class CollectionPagingSourceTest {
     }
 
     @Test
+    fun `when success but result is empty, return the result`() = runTest {
+        val params = mockk<PagingSource.LoadParams<Int>>(relaxed = true) {
+            every { key } returns 1
+        }
+        coEvery { service.getCollection(1) } returns Response.success(CollectionResponse(emptyList()))
+
+        val result = pagingSource.load(params)
+
+        assertTrue(result is Error)
+        assertEquals(ErrorType.Empty, ((result as Error).throwable as LoadResultException).errorType)
+    }
+
+    @Test
     fun `when 500 error, return server error`() = runTest {
         val params = mockk<PagingSource.LoadParams<Int>>(relaxed = true) {
             every { key } returns 1

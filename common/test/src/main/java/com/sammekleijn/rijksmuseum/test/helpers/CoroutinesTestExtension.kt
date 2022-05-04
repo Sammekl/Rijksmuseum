@@ -1,4 +1,4 @@
-package nl.dpgmedia.donaldduck.test.helpers
+package com.sammekleijn.rijksmuseum.test.helpers
 
 import io.mockk.every
 import io.mockk.mockkStatic

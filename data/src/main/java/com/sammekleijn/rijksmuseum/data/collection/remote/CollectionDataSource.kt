@@ -20,9 +20,7 @@ internal class CollectionDataSource @Inject constructor(
                 initialLoadSize = PAGE_SIZE,
                 enablePlaceholders = true
             ),
-            pagingSourceFactory = {
-                pagingSource
-            }
+            pagingSourceFactory = { pagingSource }
         ).flow
     }
 }

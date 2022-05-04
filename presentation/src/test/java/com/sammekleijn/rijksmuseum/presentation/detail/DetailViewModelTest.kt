@@ -2,12 +2,12 @@ package com.sammekleijn.rijksmuseum.presentation.detail
 
 import androidx.lifecycle.SavedStateHandle
 import com.sammekleijn.rijksmuseum.presentation.overview.CollectionViewItem
+import com.sammekleijn.rijksmuseum.test.helpers.InstantTaskExecutorExtension
+import com.sammekleijn.rijksmuseum.test.helpers.testObserver
 import io.github.glytching.junit.extension.random.Random
 import io.github.glytching.junit.extension.random.RandomBeansExtension
 import io.mockk.coEvery
 import io.mockk.mockk
-import nl.dpgmedia.donaldduck.test.helpers.InstantTaskExecutorExtension
-import nl.dpgmedia.donaldduck.test.helpers.testObserver
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 

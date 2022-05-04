@@ -1,4 +1,4 @@
-package nl.dpgmedia.donaldduck.test.helpers
+package com.sammekleijn.rijksmuseum.test.helpers
 
 import android.annotation.SuppressLint
 import androidx.arch.core.executor.ArchTaskExecutor
