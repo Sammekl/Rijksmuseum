@@ -18,6 +18,7 @@ object Libraries {
         const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}"
         const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
+        const val WORK = "androidx.work:work-runtime-ktx:${Versions.ANDROIDX_WORK}"
         const val START_UP = "androidx.startup:startup-runtime:${Versions.ANDROIDX_START_UP}"
 
         object Navigation {
@@ -49,10 +50,6 @@ object Libraries {
         object AndroidX {
             const val COMPILER = "androidx.hilt:hilt-compiler:${Versions.ANDROIDX_HILT}"
             const val WORK = "androidx.hilt:hilt-work:${Versions.ANDROIDX_HILT}"
-        }
-
-        object Test {
-            const val TESTING = "com.google.dagger:hilt-android-testing:${Versions.HILT}"
         }
     }
 

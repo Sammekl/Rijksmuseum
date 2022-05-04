@@ -29,6 +29,7 @@ object Versions {
     const val CONSTRAINT_LAYOUT = "2.1.3"
     const val PAGING = "3.1.1"
     const val ANDROIDX_START_UP = "1.1.0"
+    const val ANDROIDX_WORK = "2.7.1"
     const val VECTOR_DRAWABLE = "1.1.0"
     const val ANDROIDX_NAVIGATION = "2.4.0"
     const val SAFE_ARGS = "2.4.0"

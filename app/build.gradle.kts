@@ -61,6 +61,7 @@ dependencies {
     implementation(Libraries.AndroidX.CORE)
     implementation(Libraries.AndroidX.COMPAT)
     implementation(Libraries.AndroidX.MATERIAL)
+    implementation(Libraries.AndroidX.WORK)
 
     implementation(Libraries.Hilt.CORE)
     implementation(Libraries.Hilt.AndroidX.WORK)
