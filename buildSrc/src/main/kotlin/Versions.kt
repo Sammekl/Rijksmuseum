@@ -27,6 +27,7 @@ object Versions {
     const val COMPAT = "1.4.1"
     const val MATERIAL = "1.6.0-alpha02"
     const val CONSTRAINT_LAYOUT = "2.1.3"
+    const val PAGING = "3.1.1"
     const val VECTOR_DRAWABLE = "1.1.0"
     const val ANDROIDX_NAVIGATION = "2.4.0"
     const val SAFE_ARGS = "2.4.0"

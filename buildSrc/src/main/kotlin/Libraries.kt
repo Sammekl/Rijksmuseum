@@ -16,8 +16,8 @@ object Libraries {
         const val FRAGMENT = "androidx.fragment:fragment-ktx:${Versions.FRAGMENT_KTX}"
         const val COMPAT = "androidx.appcompat:appcompat:${Versions.COMPAT}"
         const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
-        const val CONSTRAINT_LAYOUT =
-            "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}"
+        const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}"
+        const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
 
         object Navigation {
             const val FRAGMENT =

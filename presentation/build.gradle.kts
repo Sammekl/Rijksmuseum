@@ -29,6 +29,7 @@ dependencies {
     implementation(Libraries.AndroidX.COMPAT)
     implementation(Libraries.AndroidX.MATERIAL)
     implementation(Libraries.AndroidX.CONSTRAINT_LAYOUT)
+    implementation(Libraries.AndroidX.PAGING)
     implementation(Libraries.AndroidX.Navigation.FRAGMENT)
     implementation(Libraries.AndroidX.FRAGMENT)
     implementation(Libraries.AndroidX.Navigation.UI)

@@ -14,4 +14,5 @@ dependencies {
     implementation(Libraries.OK_HTTP)
 
     implementation(Libraries.KotlinCoroutines.CORE)
+    implementation(Libraries.AndroidX.PAGING)
 }

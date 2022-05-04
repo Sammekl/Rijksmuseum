@@ -12,10 +12,10 @@ dependencies {
 
     implementation(Libraries.HTTP_LOGGING)
 
-
     implementation(Libraries.Retrofit.RETROFIT)
     implementation(Libraries.Retrofit.MOSHI)
     implementation(Libraries.MOSHI)
+    implementation(Libraries.AndroidX.PAGING)
 
     implementation(Libraries.Coil.COIL)
     implementation(Libraries.Coil.BASE)
@@ -24,8 +24,6 @@ dependencies {
     implementation(Libraries.Hilt.AndroidX.WORK)
     kapt(Libraries.Hilt.COMPILER)
     kapt(Libraries.Hilt.AndroidX.COMPILER)
-
-    implementation(Libraries.AndroidX.Lifecycle.LIVEDATA)
 
     debugImplementation(Libraries.Chucker.CHUCKER)
     releaseImplementation(Libraries.Chucker.NO_OP)

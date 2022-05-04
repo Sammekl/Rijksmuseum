@@ -1,9 +1,9 @@
 package com.sammekleijn.rijksmuseum.domain.collection
 
-import com.sammekleijn.rijksmuseum.domain.result.ResultOf
+import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 
 interface CollectionRepository {
 
-    suspend fun getCollection(): Flow<ResultOf<List<CollectionItem>>>
+    fun getCollection(): Flow<PagingData<CollectionItem>>
 }
