@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="rijks_soft_red">#e5cfbc</color>
-    <color name="rijks_red">#b97360</color>
-    <color name="rijks_pure_red">#874933</color>
+    <color name="rijks_soft_blue">#6AA4E1</color>
+    <color name="rijks_blue">#3C8DE3</color>
+    <color name="rijks_pure_blue">#0468D3</color>
     <color name="rijks_pure_ocher">#b39660</color>
     <color name="rijks_ocher">#ccb990</color>
     <color name="rijks_black_grey">#48464b</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    <color name="translucent_scrim_bottom">#2A000000</color>
-    <color name="translucent_scrim_bottom_center">#0D000000</color>
 </resources>

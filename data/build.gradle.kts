@@ -16,6 +16,7 @@ dependencies {
     implementation(Libraries.Retrofit.MOSHI)
     implementation(Libraries.MOSHI)
     implementation(Libraries.AndroidX.PAGING)
+    implementation(Libraries.AndroidX.START_UP)
 
     implementation(Libraries.Coil.COIL)
     implementation(Libraries.Coil.BASE)

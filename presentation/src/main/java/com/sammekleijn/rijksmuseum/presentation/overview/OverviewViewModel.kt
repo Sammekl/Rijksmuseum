@@ -22,7 +22,7 @@ internal class OverviewViewModel @Inject constructor(
     private val repository: CollectionRepository
 ) : ViewModel() {
 
-    val onOpenArtWork = SingleLiveEvent<Pair<CollectionViewItem.Artwork, ImageView>>()
+    val onOpenArtWork = SingleLiveEvent<Pair<CollectionViewItem.ArtworkView, ImageView>>()
     val artworks = MutableStateFlow<PagingData<CollectionViewItem>>(PagingData.empty())
 
     init {
@@ -35,7 +35,7 @@ internal class OverviewViewModel @Inject constructor(
         }
     }
 
-    fun onArtworkClicked(item: CollectionViewItem.Artwork, imageView: ImageView) {
+    fun onArtworkClicked(item: CollectionViewItem.ArtworkView, imageView: ImageView) {
         Timber.i("Opening art piece ${item.title}")
         onOpenArtWork.value = Pair(item, imageView)
     }

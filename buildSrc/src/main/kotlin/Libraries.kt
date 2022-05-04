@@ -18,6 +18,7 @@ object Libraries {
         const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}"
         const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
+        const val START_UP = "androidx.startup:startup-runtime:${Versions.ANDROIDX_START_UP}"
 
         object Navigation {
             const val FRAGMENT =

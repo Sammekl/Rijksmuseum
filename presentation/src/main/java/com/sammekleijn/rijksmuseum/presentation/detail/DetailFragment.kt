@@ -4,17 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.transition.TransitionInflater
 import coil.load
+import coil.size.OriginalSize
 import com.sammekleijn.rijksmuseum.presentation.R
 import com.sammekleijn.rijksmuseum.presentation.databinding.FragmentDetailBinding
 import com.sammekleijn.rijksmuseum.presentation.overview.CollectionViewItem
 import com.sammekleijn.rijksmuseum.presentation.viewBindingLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 internal class DetailFragment : Fragment() {
@@ -39,18 +38,26 @@ internal class DetailFragment : Fragment() {
         }
     }
 
-    private fun onArtwork(artwork: CollectionViewItem.Artwork) = with(binding) {
+    private fun onArtwork(artwork: CollectionViewItem.ArtworkView) = with(binding) {
         sharedElementEnterTransition = TransitionInflater.from(requireContext())
             .inflateTransition(android.R.transition.move)
-        header.transitionName = artwork.image?.url
-        header.isVisible = true
-        header.load(artwork.image?.url) {
-            if (artwork.image != null) size(artwork.image.width, artwork.image.height)
+        header.transitionName = artwork.imageUrl
+        header.load(artwork.imageUrl) {
+            size(OriginalSize)
             error(R.drawable.no_art_found_illustration)
             fallback(R.drawable.no_art_found_illustration)
         }
         toolbarLayout.title = artwork.title
+
+        setContent(artwork.content)
     }
 
+    private fun setContent(content: CollectionViewItem.ArtworkView.Content) {
+        binding.content.longTitle.text = content.longTitle
+        binding.content.objectNumber.text = content.objectNumber
+        binding.content.productionPlace.text = if (content.productionPlaces.isEmpty()) {
+            requireContext().getString(R.string.unknown)
+        } else content.productionPlaces.distinct().joinToString(", ")
+    }
 }
 

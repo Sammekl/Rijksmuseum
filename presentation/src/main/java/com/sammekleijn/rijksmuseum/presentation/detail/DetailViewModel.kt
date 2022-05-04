@@ -12,10 +12,10 @@ internal class DetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    val artwork = MutableLiveData<CollectionViewItem.Artwork>()
+    val artwork = MutableLiveData<CollectionViewItem.ArtworkView>()
 
     init {
-        savedStateHandle.get<CollectionViewItem.Artwork>("item").also {
+        savedStateHandle.get<CollectionViewItem.ArtworkView>("item").also {
             artwork.value = it
         } ?: throw IllegalStateException("No item provided!")
     }

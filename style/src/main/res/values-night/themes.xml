@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Rijksmuseum" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/rijks_pure_red</item>
-        <item name="colorPrimaryVariant">@color/rijks_red</item>
+        <item name="colorPrimary">@color/rijks_pure_blue</item>
+        <item name="colorPrimaryVariant">@color/rijks_blue</item>
         <item name="colorOnPrimary">@color/white</item>
 
         <!-- Secondary brand color. -->

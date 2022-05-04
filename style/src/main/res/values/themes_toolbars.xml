@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RijksToolbar" parent="Widget.Design.CollapsingToolbar">
+        <item name="contentScrim">?attr/colorPrimary</item>
+        <item name="expandedTitleGravity">bottom</item>
+        <item name="collapsedTitleGravity">start</item>
+        <item name="collapsedTitleTextAppearance">@style/RijksText.H2</item>
+        <item name="expandedTitleTextAppearance">@style/RijksText.H2</item>
+        <item name="collapsedTitleTextColor">?colorOnPrimary</item>
+        <item name="expandedTitleTextColor">?colorOnPrimary</item>
+        <item name="expandedTitleMarginBottom">@dimen/default_vertical_margin</item>
+        <item name="expandedTitleMarginStart">@dimen/default_horizontal_margin</item>
+        <item name="layout_scrollFlags">scroll|exitUntilCollapsed</item>
+        <item name="android:background">?colorOnPrimary</item>
+    </style>
+</resources>

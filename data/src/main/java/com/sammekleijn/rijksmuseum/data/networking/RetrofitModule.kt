@@ -42,9 +42,7 @@ internal object RetrofitModule {
     fun provideOkHttpClient(
         @ApplicationContext context: Context,
         builder: OkHttpClient.Builder,
-        authenticator: ApiTokenAuthenticator,
     ): OkHttpClient = builder
-        .authenticator(authenticator)
         .cache(CoilUtils.createDefaultCache(context))
         .build()
 

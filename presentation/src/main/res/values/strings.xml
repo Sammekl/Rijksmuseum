@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="rijksmuseum_collection">Rijksmuseum collection</string>
     <string name="overview">Overview</string>
     <string name="details">Details</string>
     <string name="retry">retry</string>
+
     <string name="server_error_message">Connection to server failed</string>
     <string name="network_error_message">No internet connection</string>
     <string name="internal_error_message">An internal error occured</string>
     <string name="no_data_message">No more data available</string>
+    <string name="error_toast_message">An error occurred, please try again</string>
+
+    <string name="long_title">Long title:</string>
+    <string name="object_number">Object number:</string>
+    <string name="publication_places">Publication places:</string>
+    <string name="unknown">Unknown</string>
 </resources>

@@ -5,11 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import com.sammekleijn.rijksmuseum.presentation.R
 import com.sammekleijn.rijksmuseum.presentation.common.navigate
 import com.sammekleijn.rijksmuseum.presentation.databinding.FragmentOverviewBinding
 import com.sammekleijn.rijksmuseum.presentation.viewBindingLifecycle
@@ -47,6 +51,20 @@ internal class OverviewFragment : Fragment() {
                 header = CollectionLoadStateAdapter { adapter.retry() },
                 footer = CollectionLoadStateAdapter { adapter.retry() }
             )
+
+            lifecycleScope.launch {
+                adapter.loadStateFlow.collect { loadState ->
+                    val isListEmpty = loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
+                    val hasError = loadState.source.refresh is LoadState.Error
+                    list.isVisible = !isListEmpty
+                    loadingProgressbar.isVisible = loadState.source.refresh is LoadState.Loading
+                    retryButton.isVisible = hasError
+                    if (hasError) {
+                        Toast.makeText(requireContext(), R.string.error_toast_message, Toast.LENGTH_SHORT).show()
+                        retryButton.setOnClickListener { adapter.retry() }
+                    }
+                }
+            }
         }
 
         with(viewModel) {
@@ -59,15 +77,16 @@ internal class OverviewFragment : Fragment() {
                     adapter.submitData(it)
                 }
             }
+
             onOpenArtWork.observe(viewLifecycleOwner, ::onOpenArtwork)
         }
     }
 
-    private fun onOpenArtwork(pair: Pair<CollectionViewItem.Artwork, ImageView>) {
+    private fun onOpenArtwork(pair: Pair<CollectionViewItem.ArtworkView, ImageView>) {
         val action = OverviewFragmentDirections.toDetails(
             item = pair.first
         )
-        pair.first.image?.url?.let { transitionName ->
+        pair.first.imageUrl?.let { transitionName ->
             val extras = FragmentNavigatorExtras(
                 pair.second to transitionName
             )

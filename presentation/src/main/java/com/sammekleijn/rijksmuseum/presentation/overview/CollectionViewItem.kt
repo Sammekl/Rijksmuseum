@@ -7,16 +7,20 @@ import kotlinx.parcelize.Parcelize
 @Keep
 sealed class CollectionViewItem : Parcelable {
     @Parcelize
-    data class Header(val author: String) : CollectionViewItem()
+    data class HeaderView(val author: String) : CollectionViewItem()
 
     @Parcelize
-    data class Artwork(
+    data class ArtworkView(
         val title: String,
-        val image: ArtImage?
+        val imageUrl: String?,
+        val content: Content
     ) : CollectionViewItem() {
+
         @Parcelize
-        data class ArtImage(
-            val url: String, val width: Int, val height: Int
+        data class Content(
+            val longTitle: String,
+            val objectNumber: String,
+            val productionPlaces: List<String>
         ) : Parcelable
     }
 }

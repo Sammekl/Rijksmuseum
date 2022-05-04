@@ -11,12 +11,13 @@ data class CollectionResponse(
 data class ArtObjectResponse(
     val title: String,
     val principalOrFirstMaker: String,
-    val webImage: WebImageResponse?
+    val longTitle: String,
+    val objectNumber: String,
+    val webImage: WebImageResponse?,
+    val productionPlaces: List<String>
 )
 
 @Keep
 data class WebImageResponse(
-    val url: String,
-    val width: Int,
-    val height: Int,
+    val url: String
 )

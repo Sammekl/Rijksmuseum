@@ -8,14 +8,15 @@ sealed class CollectionItem {
 
     data class Artwork(
         val title: String,
-        val image: ArtImage?
+        val imageUrl: String?,
+        val content: Content
     ) : CollectionItem() {
 
         @Parcelize
-        data class ArtImage(
-            val url: String,
-            val width: Int,
-            val height: Int
+        data class Content(
+            val longTitle: String,
+            val objectNumber: String,
+            val productionPlaces: List<String>
         ) : Parcelable
     }
 }
