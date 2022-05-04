@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.sammekleijn.rijksmuseum.presentation.databinding.FragmentOverviewBinding
 import com.sammekleijn.rijksmuseum.presentation.viewBindingLifecycle
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,15 +39,19 @@ internal class OverviewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            list.adapter = adapter
+            list.adapter = adapter.withLoadStateHeaderAndFooter(
+                header = CollectionLoadStateAdapter { adapter.retry() },
+                footer = CollectionLoadStateAdapter { adapter.retry() }
+            )
+            list.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
         }
 
         with(viewModel) {
             items.observe(viewLifecycleOwner, ::onItems)
 
             viewLifecycleOwner.lifecycleScope.launch {
-                getCollectionItems().collectLatest { items ->
-                    adapter.submitData(items)
+                getCollectionItems().collectLatest {
+                    adapter.submitData(it)
                 }
             }
         }
