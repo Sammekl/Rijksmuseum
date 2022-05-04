@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text sizes -->
+    <dimen name="rijks_text_size_h1">24sp</dimen>
+    <dimen name="rijks_text_line_height_h1">28sp</dimen>
+
+    <dimen name="rijks_text_size_h2">20sp</dimen>
+    <dimen name="rijks_text_line_height_h2">24sp</dimen>
+
+    <dimen name="rijks_text_size_body">18sp</dimen>
+    <dimen name="rijks_text_line_height_body">24sp</dimen>
+</resources>

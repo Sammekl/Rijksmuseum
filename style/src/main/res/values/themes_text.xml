@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="RijksText" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.0</item>
+    </style>
+
+    <style name="RijksText.H1" parent="RijksText">
+        <item name="android:textSize">@dimen/rijks_text_size_h1</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/rijks_text_line_height_h1</item>
+    </style>
+
+    <style name="RijksText.H2" parent="RijksText">
+        <item name="android:textSize">@dimen/rijks_text_size_h2</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/rijks_text_line_height_h2</item>
+    </style>
+
+    <style name="RijksText.Body" parent="RijksText">
+        <item name="android:textSize">@dimen/rijks_text_size_body</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/rijks_text_line_height_body</item>
+    </style>
+</resources>

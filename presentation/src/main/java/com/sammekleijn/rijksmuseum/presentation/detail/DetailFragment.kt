@@ -15,6 +15,7 @@ import com.sammekleijn.rijksmuseum.presentation.overview.CollectionViewItem
 import com.sammekleijn.rijksmuseum.presentation.viewBindingLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 internal class DetailFragment : Fragment() {
 
@@ -41,14 +42,15 @@ internal class DetailFragment : Fragment() {
     private fun onArtwork(artwork: CollectionViewItem.Artwork) = with(binding) {
         sharedElementEnterTransition = TransitionInflater.from(requireContext())
             .inflateTransition(android.R.transition.move)
-        image.transitionName = artwork.image?.url
-        image.isVisible = true
-        image.load(artwork.image?.url) {
+        header.transitionName = artwork.image?.url
+        header.isVisible = true
+        header.load(artwork.image?.url) {
             if (artwork.image != null) size(artwork.image.width, artwork.image.height)
             error(R.drawable.no_art_found_illustration)
             fallback(R.drawable.no_art_found_illustration)
         }
-        title.text = artwork.title
+        toolbarLayout.title = artwork.title
     }
+
 }
 
