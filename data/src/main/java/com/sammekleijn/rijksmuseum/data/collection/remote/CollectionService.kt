@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 internal interface CollectionService {
 
-    @GET("/api/nl/collection?key=${BuildConfig.RIJKSMUSEUM_API_KEY}&ps=10")
+    @GET("/api/nl/collection?key=${BuildConfig.RIJKSMUSEUM_API_KEY}&ps=10&s=artist")
     suspend fun getCollection(
         @Query("p") page: Int
     ): Response<CollectionResponse>

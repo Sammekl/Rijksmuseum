@@ -6,6 +6,6 @@ internal fun CollectionResponse.toCollectionItems(): List<CollectionItem> = artO
     CollectionItem(
         author = it.principalOrFirstMaker,
         title = it.title,
-        imageUrl = it.webImage.url
+        imageUrl = it.webImage?.url
     )
 }

@@ -11,7 +11,7 @@ data class CollectionResponse(
 data class ArtObjectResponse(
     val title: String,
     val principalOrFirstMaker: String,
-    val webImage: WebImageResponse
+    val webImage: WebImageResponse?
 )
 
 @Keep
