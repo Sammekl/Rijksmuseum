@@ -1,7 +1,9 @@
 package com.sammekleijn.rijksmuseum.domain.collection
 
-data class CollectionItem(
-    val author: String,
-    val title: String,
-    val imageUrl: String?
-)
+sealed class CollectionItem {
+    data class Header(val author: String) : CollectionItem()
+    data class Artwork(
+        val title: String,
+        val imageUrl: String?
+    ) : CollectionItem()
+}

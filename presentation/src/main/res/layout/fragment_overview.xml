@@ -15,6 +15,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"
-        tools:listitem="@layout/item_collection_overview_item" />
+        tools:listitem="@layout/item_collection_overview_artwork_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

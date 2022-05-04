@@ -1,7 +1,9 @@
 package com.sammekleijn.rijksmuseum.presentation.overview
 
-data class CollectionViewItem(
-    val author: String,
-    val title: String,
-    val imageUrl: String?
-)
+sealed class CollectionViewItem {
+    data class Header(val author: String) : CollectionViewItem()
+    data class Artwork(
+        val title: String,
+        val imageUrl: String?
+    ) : CollectionViewItem()
+}
