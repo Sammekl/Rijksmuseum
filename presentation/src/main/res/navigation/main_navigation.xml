@@ -13,12 +13,20 @@
 
         <action
             android:id="@+id/to_details"
-            app:destination="@id/nav_details" />
+            app:destination="@id/nav_details"
+            app:popUpTo="@id/nav_overview" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_details"
         android:name="com.sammekleijn.rijksmuseum.presentation.detail.DetailFragment"
         android:label="@string/details"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="item"
+            app:argType="com.sammekleijn.rijksmuseum.presentation.overview.CollectionViewItem"
+            app:nullable="false" />
+
+    </fragment>
 </navigation>

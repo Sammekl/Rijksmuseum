@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
+import com.sammekleijn.rijksmuseum.presentation.common.navigate
 import com.sammekleijn.rijksmuseum.presentation.databinding.FragmentOverviewBinding
 import com.sammekleijn.rijksmuseum.presentation.viewBindingLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 internal class OverviewFragment : Fragment() {
@@ -23,7 +26,7 @@ internal class OverviewFragment : Fragment() {
     private val viewModel: OverviewViewModel by viewModels()
 
     private val adapter: OverviewListAdapter by lazy {
-        OverviewListAdapter()
+        OverviewListAdapter(viewModel::onArtworkClicked)
     }
 
     override fun onCreateView(
@@ -37,27 +40,38 @@ internal class OverviewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
 
         with(binding) {
             list.adapter = adapter.withLoadStateHeaderAndFooter(
                 header = CollectionLoadStateAdapter { adapter.retry() },
                 footer = CollectionLoadStateAdapter { adapter.retry() }
             )
-            list.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
         }
 
         with(viewModel) {
-            items.observe(viewLifecycleOwner, ::onItems)
-
             viewLifecycleOwner.lifecycleScope.launch {
-                getCollectionItems().collectLatest {
+                artworks.onEach {
+                    binding.list.post {
+                        startPostponedEnterTransition()
+                    }
+                }.collectLatest {
                     adapter.submitData(it)
                 }
             }
+            onOpenArtWork.observe(viewLifecycleOwner, ::onOpenArtwork)
         }
     }
 
-    private fun onItems(items: List<CollectionViewItem>) {
-        Timber.i("items: $items")
+    private fun onOpenArtwork(pair: Pair<CollectionViewItem.Artwork, ImageView>) {
+        val action = OverviewFragmentDirections.toDetails(
+            item = pair.first
+        )
+        pair.first.image?.url?.let { transitionName ->
+            val extras = FragmentNavigatorExtras(
+                pair.second to transitionName
+            )
+            findNavController().navigate(action, extras)
+        } ?: navigate(action)
     }
 }

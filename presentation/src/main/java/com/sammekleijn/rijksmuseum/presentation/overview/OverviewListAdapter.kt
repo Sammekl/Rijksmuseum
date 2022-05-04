@@ -2,6 +2,7 @@ package com.sammekleijn.rijksmuseum.presentation.overview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,9 @@ import com.sammekleijn.rijksmuseum.presentation.databinding.ItemCollectionOvervi
 import com.sammekleijn.rijksmuseum.presentation.overview.OverviewListAdapter.ViewType.ARTWORK
 import com.sammekleijn.rijksmuseum.presentation.overview.OverviewListAdapter.ViewType.HEADER
 
-class OverviewListAdapter : PagingDataAdapter<CollectionViewItem, RecyclerView.ViewHolder>(CollectionItemDiffCallback()) {
+class OverviewListAdapter(
+    private val onItemClicked: (item: CollectionViewItem.Artwork, ImageView) -> Unit
+) : PagingDataAdapter<CollectionViewItem, RecyclerView.ViewHolder>(CollectionItemDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
         return when (val item = getItem(position)) {
@@ -54,9 +57,13 @@ class OverviewListAdapter : PagingDataAdapter<CollectionViewItem, RecyclerView.V
 
         fun bind(item: CollectionViewItem.Artwork) = with(binding) {
             title.text = item.title
-            image.load(item.imageUrl) {
-                error(R.drawable.no_art_found_placeholder)
+            image.transitionName = item.image?.url
+            image.load(item.image?.url) {
+                if (item.image != null) size(item.image.width, item.image.height)
+                error(R.drawable.no_art_found_illustration)
+                fallback(R.drawable.no_art_found_illustration)
             }
+            root.setOnClickListener { onItemClicked(item, image) }
         }
     }
 

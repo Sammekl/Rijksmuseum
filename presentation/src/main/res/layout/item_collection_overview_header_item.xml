@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
     android:background="?colorSecondary"
-    android:paddingVertical="@dimen/default_vertical_margin_half">
+    android:layout_marginVertical="4dp"
+    android:paddingVertical="4dp">
 
     <TextView
         android:id="@+id/author"
