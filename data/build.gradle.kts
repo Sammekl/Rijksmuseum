@@ -33,4 +33,5 @@ dependencies {
     testImplementation(Libraries.MOCKK)
     testImplementation(Libraries.TEST_CORE)
     testImplementation(Libraries.COROUTINES_TEST)
+    testImplementation(project(Modules.COMMON_TEST))
 }

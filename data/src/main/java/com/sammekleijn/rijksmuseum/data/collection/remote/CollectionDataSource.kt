@@ -10,7 +10,7 @@ import javax.inject.Inject
 internal const val PAGE_SIZE = 10
 
 internal class CollectionDataSource @Inject constructor(
-    private val service: CollectionService
+    private val pagingSource: CollectionPagingSource
 ) {
 
     fun getCollection(): Flow<PagingData<CollectionItem>> {
@@ -21,7 +21,7 @@ internal class CollectionDataSource @Inject constructor(
                 enablePlaceholders = true
             ),
             pagingSourceFactory = {
-                CollectionPagingSource(service = service)
+                pagingSource
             }
         ).flow
     }
