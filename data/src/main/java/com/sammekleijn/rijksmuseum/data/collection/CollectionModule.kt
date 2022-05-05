@@ -22,7 +22,6 @@ internal abstract class CollectionModule {
 
         @Provides
         @Reusable
-        internal fun provideCollectionService(retrofit: Retrofit): CollectionService =
-            retrofit.create()
+        internal fun provideCollectionService(retrofit: Retrofit): CollectionService = retrofit.create()
     }
 }

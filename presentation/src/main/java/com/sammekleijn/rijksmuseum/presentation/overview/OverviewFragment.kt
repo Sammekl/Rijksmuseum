@@ -19,7 +19,7 @@ import com.sammekleijn.rijksmuseum.presentation.databinding.FragmentOverviewBind
 import com.sammekleijn.rijksmuseum.presentation.viewBindingLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -47,10 +47,7 @@ internal class OverviewFragment : Fragment() {
         postponeEnterTransition()
 
         with(binding) {
-            list.adapter = adapter.withLoadStateHeaderAndFooter(
-                header = CollectionLoadStateAdapter { adapter.retry() },
-                footer = CollectionLoadStateAdapter { adapter.retry() }
-            )
+            list.adapter = adapter.withLoadStateFooter(CollectionLoadStateAdapter { adapter.retry() })
 
             lifecycleScope.launch {
                 adapter.loadStateFlow.collect { loadState ->
@@ -69,13 +66,9 @@ internal class OverviewFragment : Fragment() {
 
         with(viewModel) {
             viewLifecycleOwner.lifecycleScope.launch {
-                artworks.onEach {
-                    binding.list.post {
-                        startPostponedEnterTransition()
-                    }
-                }.collectLatest {
-                    adapter.submitData(it)
-                }
+                artworks
+                    .onStart { binding.list.post { startPostponedEnterTransition() } }
+                    .collectLatest { adapter.submitData(it) }
             }
 
             onOpenArtWork.observe(viewLifecycleOwner, ::onOpenArtwork)

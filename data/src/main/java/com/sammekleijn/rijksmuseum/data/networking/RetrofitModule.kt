@@ -15,7 +15,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import timber.log.Timber
 import javax.inject.Singleton
 
 @Module
@@ -23,10 +22,9 @@ import javax.inject.Singleton
 internal object RetrofitModule {
 
     @Provides
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor =
-        HttpLoggingInterceptor { message ->
-            Timber.tag("RIJKS-HTTP").i(message)
-        }.setLevel(HttpLoggingInterceptor.Level.BODY)
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
 
     @Provides
     internal fun provideCommonOkHttpClientBuilder(
@@ -34,7 +32,7 @@ internal object RetrofitModule {
         @ApplicationContext context: Context,
     ): OkHttpClient.Builder =
         OkHttpClient.Builder()
-            .addNetworkInterceptor(loggingInterceptor)
+            .addInterceptor(loggingInterceptor)
             .addInterceptor(ChuckerInterceptor.Builder(context).build())
 
     @Provides

@@ -10,17 +10,19 @@ import com.sammekleijn.rijksmuseum.domain.result.LoadResultException
 import com.sammekleijn.rijksmuseum.presentation.R
 import com.sammekleijn.rijksmuseum.presentation.common.asErrorResource
 import com.sammekleijn.rijksmuseum.presentation.databinding.CollectionLoadingFooterBinding
-import com.sammekleijn.rijksmuseum.presentation.overview.CollectionLoadStateAdapter.CollectionLoadStateViewHolder.Companion.create
 
 internal class CollectionLoadStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<CollectionLoadStateAdapter.CollectionLoadStateViewHolder>() {
 
+    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): CollectionLoadStateViewHolder =
+        CollectionLoadStateViewHolder(
+            CollectionLoadingFooterBinding.bind(
+                LayoutInflater.from(parent.context).inflate(R.layout.collection_loading_footer, parent, false)
+            ), retry
+        )
+
     override fun onBindViewHolder(holder: CollectionLoadStateViewHolder, loadState: LoadState) {
         holder.bind(loadState)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): CollectionLoadStateViewHolder {
-        return create(parent, retry)
     }
 
     class CollectionLoadStateViewHolder(
@@ -29,7 +31,7 @@ internal class CollectionLoadStateAdapter(private val retry: () -> Unit) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.retryButton.setOnClickListener { retry.invoke() }
+            binding.retryButton.setOnClickListener { retry() }
         }
 
         fun bind(loadState: LoadState) = with(binding) {
@@ -39,15 +41,6 @@ internal class CollectionLoadStateAdapter(private val retry: () -> Unit) :
             progressBar.isVisible = loadState is LoadState.Loading
             retryButton.isVisible = loadState is LoadState.Error
             error.isVisible = loadState is LoadState.Error
-        }
-
-        companion object {
-            fun create(parent: ViewGroup, retry: () -> Unit): CollectionLoadStateViewHolder {
-                val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.collection_loading_footer, parent, false)
-                val binding = CollectionLoadingFooterBinding.bind(view)
-                return CollectionLoadStateViewHolder(binding, retry)
-            }
         }
     }
 }

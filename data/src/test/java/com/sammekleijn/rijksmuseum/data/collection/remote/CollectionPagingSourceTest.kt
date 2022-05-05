@@ -57,7 +57,7 @@ internal class CollectionPagingSourceTest {
     }
 
     @Test
-    fun `when success but result is empty, return the result`() = runTest {
+    fun `when success but result is empty, return empty errorType`() = runTest {
         val params = mockk<PagingSource.LoadParams<Int>>(relaxed = true) {
             every { key } returns 1
         }

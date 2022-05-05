@@ -7,9 +7,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import com.sammekleijn.rijksmuseum.presentation.R
 
-internal val <T> T.exhaustive: T
-    get() = this
-
 internal fun Fragment.navigate(directions: NavDirections, navOptions: NavOptions? = defaultNavOptions) =
     NavHostFragment.findNavController(this).navigate(directions, navOptions)
 

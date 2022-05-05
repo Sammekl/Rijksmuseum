@@ -11,8 +11,6 @@ dependencies {
     kapt(Libraries.Hilt.COMPILER)
     kapt(Libraries.Hilt.AndroidX.COMPILER)
 
-    implementation(Libraries.OK_HTTP)
-
     implementation(Libraries.KotlinCoroutines.CORE)
     implementation(Libraries.AndroidX.PAGING)
 }

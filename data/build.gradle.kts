@@ -22,7 +22,6 @@ dependencies {
     implementation(Libraries.Coil.BASE)
 
     implementation(Libraries.Hilt.CORE)
-    implementation(Libraries.Hilt.AndroidX.WORK)
     kapt(Libraries.Hilt.COMPILER)
     kapt(Libraries.Hilt.AndroidX.COMPILER)
 

@@ -34,5 +34,4 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="De Nachtwacht" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

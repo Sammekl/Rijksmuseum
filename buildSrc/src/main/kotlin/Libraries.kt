@@ -7,7 +7,6 @@ object Libraries {
     const val MOSHI = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}"
     const val OK_HTTP = "com.squareup.okhttp3:okhttp:${Versions.OK_HTTP}"
     const val HTTP_LOGGING = "com.squareup.okhttp3:logging-interceptor:${Versions.HTTP_LOGGING}"
-    const val SHIMMER = "com.facebook.shimmer:shimmer:${Versions.SHIMMER}"
 
     object AndroidX {
 
@@ -49,7 +48,6 @@ object Libraries {
 
         object AndroidX {
             const val COMPILER = "androidx.hilt:hilt-compiler:${Versions.ANDROIDX_HILT}"
-            const val WORK = "androidx.hilt:hilt-work:${Versions.ANDROIDX_HILT}"
         }
     }
 
@@ -66,11 +64,9 @@ object Libraries {
     const val JUNIT = "org.junit.jupiter:junit-jupiter:${Versions.JUNIT}"
     const val JUNIT_EXTENSIONS = "io.github.glytching:junit-extensions:${Versions.JUNIT_EXTENSIONS}"
     const val MOCKK = "io.mockk:mockk:${Versions.MOCKK}"
-    const val MOCKK_ANDROID = "io.mockk:mockk-android:${Versions.MOCKK}"
     const val TEST_CORE = "androidx.test:core:${Versions.TEST_CORE}"
     const val COROUTINES_TEST =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINE_TEST}"
-    const val JUNIT_KTX = "androidx.test.ext:junit-ktx:${Versions.JUNIT_KTX}"
 
     object Chucker {
         const val CHUCKER = "com.github.chuckerteam.chucker:library:${Versions.CHUCKER}"

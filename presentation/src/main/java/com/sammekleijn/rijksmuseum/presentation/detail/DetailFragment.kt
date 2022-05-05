@@ -39,8 +39,7 @@ internal class DetailFragment : Fragment() {
     }
 
     private fun onArtwork(artwork: CollectionViewItem.ArtworkView) = with(binding) {
-        sharedElementEnterTransition = TransitionInflater.from(requireContext())
-            .inflateTransition(android.R.transition.move)
+        sharedElementEnterTransition = TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
         header.transitionName = artwork.image?.url
         header.load(artwork.image?.url) {
             size(OriginalSize)
