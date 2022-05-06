@@ -9,10 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.transition.TransitionInflater
 import coil.load
 import coil.size.OriginalSize
+import com.sammekleijn.rijksmuseum.domain.common.StringResource
 import com.sammekleijn.rijksmuseum.presentation.R
+import com.sammekleijn.rijksmuseum.presentation.common.viewBindingLifecycle
 import com.sammekleijn.rijksmuseum.presentation.databinding.FragmentDetailBinding
 import com.sammekleijn.rijksmuseum.presentation.overview.CollectionViewItem
-import com.sammekleijn.rijksmuseum.presentation.viewBindingLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,6 +36,7 @@ internal class DetailFragment : Fragment() {
 
         with(viewModel) {
             artwork.observe(viewLifecycleOwner, ::onArtwork)
+            productionPlaces.observe(viewLifecycleOwner, ::onProductionPlaces)
         }
     }
 
@@ -47,16 +49,12 @@ internal class DetailFragment : Fragment() {
             fallback(R.drawable.no_art_found_illustration)
         }
         toolbarLayout.title = artwork.title
-
-        setContent(artwork.content)
+        binding.content.longTitle.text = artwork.content.longTitle
+        binding.content.objectNumber.text = artwork.content.objectNumber
     }
 
-    private fun setContent(content: CollectionViewItem.ArtworkView.Content) {
-        binding.content.longTitle.text = content.longTitle
-        binding.content.objectNumber.text = content.objectNumber
-        binding.content.productionPlace.text = if (content.productionPlaces.isEmpty()) {
-            requireContext().getString(R.string.unknown)
-        } else content.productionPlaces.distinct().joinToString(", ")
+    private fun onProductionPlaces(resource: StringResource) {
+        binding.content.productionPlaces.text = resource.get(requireContext())
     }
 }
 

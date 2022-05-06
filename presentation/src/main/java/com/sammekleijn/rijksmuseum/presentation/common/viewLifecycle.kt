@@ -1,4 +1,4 @@
-package com.sammekleijn.rijksmuseum.presentation
+package com.sammekleijn.rijksmuseum.presentation.common
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver

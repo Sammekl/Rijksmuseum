@@ -15,8 +15,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.sammekleijn.rijksmuseum.presentation.R
 import com.sammekleijn.rijksmuseum.presentation.common.navigate
+import com.sammekleijn.rijksmuseum.presentation.common.viewBindingLifecycle
 import com.sammekleijn.rijksmuseum.presentation.databinding.FragmentOverviewBinding
-import com.sammekleijn.rijksmuseum.presentation.viewBindingLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.onStart

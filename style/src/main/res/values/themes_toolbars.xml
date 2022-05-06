@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="RijksToolbar" parent="Widget.Design.CollapsingToolbar">
+
+<style name="RijksToolbar" parent="Widget.Design.CollapsingToolbar">
         <item name="contentScrim">?attr/colorPrimary</item>
         <item name="expandedTitleGravity">bottom</item>
         <item name="collapsedTitleGravity">start</item>
