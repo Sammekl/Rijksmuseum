@@ -46,6 +46,7 @@ internal class DetailFragment : Fragment() {
         header.load(artwork.image?.url) {
             size(OriginalSize)
             error(R.drawable.no_art_found_illustration)
+            placeholder(R.drawable.no_art_found_illustration)
             fallback(R.drawable.no_art_found_illustration)
         }
         toolbarLayout.title = artwork.title

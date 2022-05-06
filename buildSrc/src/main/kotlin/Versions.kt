@@ -12,6 +12,8 @@ object Versions {
     const val OK_HTTP = "4.9.3"
     const val HTTP_LOGGING = "4.9.0"
 
+    const val SHIMMER = "0.5.0"
+
     const val COIL = "1.4.0"
 
     const val KOTLIN_STD_LIB = "1.6.10"

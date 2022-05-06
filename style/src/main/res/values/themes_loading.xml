@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RijksImageShimmer">
+        <item name="shimmer_auto_start">true</item>
+        <item name="shimmer_duration">1600</item>
+        <item name="shimmer_intensity">0.2</item>
+        <item name="shimmer_highlight_alpha">0.5</item>
+        <item name="android:background">@color/rijks_grey</item>
+    </style>
+</resources>

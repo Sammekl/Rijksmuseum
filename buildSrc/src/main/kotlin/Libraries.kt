@@ -7,6 +7,7 @@ object Libraries {
     const val MOSHI = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}"
     const val OK_HTTP = "com.squareup.okhttp3:okhttp:${Versions.OK_HTTP}"
     const val HTTP_LOGGING = "com.squareup.okhttp3:logging-interceptor:${Versions.HTTP_LOGGING}"
+    const val SHIMMER = "com.facebook.shimmer:shimmer:${Versions.SHIMMER}"
 
     object AndroidX {
 

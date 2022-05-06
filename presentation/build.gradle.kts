@@ -23,6 +23,8 @@ dependencies {
     implementation(Libraries.Coil.COIL)
     implementation(Libraries.Coil.BASE)
 
+    implementation(Libraries.SHIMMER)
+
     implementation(Libraries.AndroidX.CORE)
     implementation(Libraries.AndroidX.COMPAT)
     implementation(Libraries.AndroidX.MATERIAL)

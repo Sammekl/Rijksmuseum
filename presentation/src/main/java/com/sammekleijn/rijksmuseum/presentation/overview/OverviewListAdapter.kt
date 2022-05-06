@@ -64,7 +64,6 @@ class OverviewListAdapter(
             image.load(item.image?.url) {
                 size(OriginalSize)
                 error(R.drawable.no_art_found_illustration)
-                fallback(R.drawable.no_art_found_illustration)
             }
             root.setOnClickListener { onItemClicked(item, image) }
         }
@@ -73,7 +72,7 @@ class OverviewListAdapter(
             val relativeWidth = width.toFloat() / height.toFloat()
             ConstraintSet().apply {
                 clone(binding.root)
-                setDimensionRatio(binding.image.id, "$relativeWidth:1")
+                setDimensionRatio(binding.imageShimmer.id, "$relativeWidth:1")
                 applyTo(binding.root)
             }
         }
@@ -90,7 +89,7 @@ private class CollectionItemDiffCallback : DiffUtil.ItemCallback<CollectionViewI
         return if (oldItem is CollectionViewItem.HeaderView && newItem is CollectionViewItem.HeaderView) {
             oldItem.author == newItem.author
         } else if (oldItem is CollectionViewItem.ArtworkView && newItem is CollectionViewItem.ArtworkView) {
-            oldItem.title == newItem.title
+            oldItem.image?.url == oldItem.image?.url
         } else false
     }
 
