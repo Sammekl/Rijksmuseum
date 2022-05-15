@@ -2,14 +2,12 @@ object Versions {
 
     const val BUILD_TOOLS = "31.0.0"
     const val GRADLE_TOOLS = "7.0.4"
-    const val DETEKT = "1.19.0"
 
     const val TIMBER = "5.0.1"
 
     const val RETROFIT = "2.9.0"
     const val MOSHI = "1.13.0"
     const val MOSHI_RETROFIT = "2.9.0"
-    const val OK_HTTP = "4.9.3"
     const val HTTP_LOGGING = "4.9.0"
 
     const val SHIMMER = "0.5.0"
@@ -32,7 +30,6 @@ object Versions {
     const val ANDROIDX_NAVIGATION = "2.4.0"
     const val SAFE_ARGS = "2.4.0"
     const val LIFECYCLE = "2.4.0"
-    const val LIFECYCLE_EXTENSIONS = "2.2.0"
     const val HILT = "2.40.5"
     const val ANDROIDX_HILT = "1.0.0"
 
